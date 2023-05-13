@@ -15,7 +15,7 @@ class ScannerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityScannerBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.btnScanner.setOnClickListener{initScanner()}
+        initScanner()
     }
 
     private fun initScanner() {
@@ -33,7 +33,12 @@ class ScannerActivity : AppCompatActivity() {
             if (result.contents==null){
                 Toast.makeText(this, R.string.TxtCanceled, Toast.LENGTH_SHORT).show()
             }else{
-                Toast.makeText(this, "El valor escaneado es ${result.contents}", Toast.LENGTH_SHORT).show()
+                val codeBar:String = result.contents
+                val intentResult = Intent(this, ResultActivity::class.java)
+                intentResult.putExtra("codeBar", codeBar)
+                startActivity(intentResult)
+
+               // Toast.makeText(this, "El valor escaneado es ${result.contents}", Toast.LENGTH_SHORT).show()
 
             }
         }else{

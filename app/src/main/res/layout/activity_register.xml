@@ -8,17 +8,17 @@
     tools:context=".RegisterActivity">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cvHeaderRegister"
+        android:id="@+id/cvHeaderResult"
         android:layout_width="412dp"
         android:layout_height="140dp"
-        android:backgroundTint="#14EF79"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/backgound_gradient">
 
             <TextView
                 android:id="@+id/tvRegister"
@@ -43,7 +43,7 @@
         android:text="@string/TxtNameUserRegister"
         android:textColor="#1541DC"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvHeaderRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/cvHeaderResult" />
 
     <EditText
         android:id="@+id/etNameUserRegister"
@@ -54,6 +54,7 @@
         android:ems="10"
         android:inputType="text"
         android:minHeight="48dp"
+        android:textColor="#2196F3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNameUserRegister"
         tools:ignore="LabelFor,TextFields,SpeakableTextPresentCheck" />
@@ -78,6 +79,7 @@
         android:ems="10"
         android:inputType="text"
         android:minHeight="48dp"
+        android:textColor="#2196F3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPasswordRegister"
         tools:ignore="LabelFor,TextFields,SpeakableTextPresentCheck" />
@@ -102,6 +104,7 @@
         android:ems="10"
         android:inputType="text"
         android:minHeight="48dp"
+        android:textColor="#2196F3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRepeatPasswordRegister"
         tools:ignore="LabelFor,TextFields,SpeakableTextPresentCheck" />
@@ -126,6 +129,7 @@
         android:ems="10"
         android:inputType="text"
         android:minHeight="48dp"
+        android:textColor="#2196F3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMailRegister"
         tools:ignore="LabelFor,TextFields,SpeakableTextPresentCheck" />
@@ -143,16 +147,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmailRegister" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/menuNavigationRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_navigation"
-        app:itemIconTint="@color/black"
-        android:background="#FFFFFF"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

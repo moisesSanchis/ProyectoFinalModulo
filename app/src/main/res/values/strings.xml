@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProyectoMoises</string>
+    <string name="app_name">Recycler</string>
     <string name="TxtWelcome">Bienvenido usario</string>
     <string name="TxtClassify">Clasifica tu envase</string>
     <string name="TxtLocate">Localiza tu area de reciclaje</string>
@@ -36,4 +36,19 @@
     <string name="TxtScan">Escanear</string>
     <string name="TxtCanceled">Cancelado</string>
     <string name="TxtMessageScan">Escanee el codigo de barras del envase</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="TxtAcceptPermissionsSettings">Vaya a ajustes y acepte los permisos</string>
+    <string name="TxtErrorDataBase">Se ha producido un error en la base de datos</string>
+    <string name="TxtUserSaveDataBase">Se ha guardado correctamente el usuario en la base de datos</string>
+    <string name="TxtUserErrorDataBase">No se ha podido guardar el usuario en la base de datos</string>
+    <string name="TxtNameExists">El nombre de ese usuario ya existe</string>
+    <string name="TxtResults">Resultados de la busqueda</string>
+    <string name="TxtResult">No hay resultados</string>
+    <string name="TxtContainerNotFound">No hay un envase con ese codigo en la base de datos</string>
+    <string name="TxtPlasticResult">El envase escaneado es de plastico/latas/brick y por lo tanto tiene que depositarse en el contenedor amarillo</string>
+    <string name="TxtCardboardResult">El envase escaneado es de papel/cartón y por lo tanto  tiene que depositarse en el contenedor azul</string>
+    <string name="TxtGlassResult">El envase escaneado es de cristal y por lo tanto tiene que depositarse en el contenedor verde</string>
+    <string name="TxtEcoparkResult">El envase escaneado contiene componentes electronicos y por lo tanto tiene que llevarse a un ecoparque</string>
+    <string name="TxtLearnHeader">Aprende a reciclar</string>
+
 </resources>
