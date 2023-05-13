@@ -14,20 +14,19 @@
         android:layout_height="match_parent">
 
 
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cvLocateMain"
             android:layout_width="230dp"
             android:layout_height="103dp"
             android:layout_marginTop="32dp"
-            android:backgroundTint="#00FB74"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/cvAwardsMain">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/backgound_gradient">
 
                 <ImageView
                     android:id="@+id/ivTrashMain"
@@ -61,14 +60,14 @@
             android:layout_width="232dp"
             android:layout_height="104dp"
             android:layout_marginTop="32dp"
-            android:backgroundTint="#00FB74"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/cvClassifyPackagingMain">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/backgound_gradient">
 
                 <ImageView
                     android:id="@+id/ivAwardsMain"
@@ -110,7 +109,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/backgound_gradient">
 
                 <ImageView
                     android:id="@+id/ivCodeMain"
@@ -159,7 +159,6 @@
             android:id="@+id/cvHeaderMain"
             android:layout_width="412dp"
             android:layout_height="140dp"
-            android:backgroundTint="#14EF79"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -167,7 +166,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/backgound_gradient">
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
