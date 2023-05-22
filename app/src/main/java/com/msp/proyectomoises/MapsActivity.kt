@@ -13,6 +13,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.msp.proyectomoises.databinding.ActivityMapsBinding
@@ -41,10 +42,49 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
        //Marcador para el Simarro.
-        val simarro = LatLng(38.986,  -0.532944)
+        val simarro = LatLng(38.986472, -0.535433)
         mMap.addMarker(MarkerOptions().position(simarro).title("Marker in Simarro"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(simarro, 18f))
+        val currentLatLong1 = LatLng(38.986972, -0.535375)
+        val currentLatLong2 = LatLng(38.986939, -0.535443)
+        val currentLatLong3 = LatLng(38.986904, -0.535576)
+        val currentLatLong4 = LatLng(38.986259, -0.536187)
+        val currentLatLong5 = LatLng(38.986236, -0.536270)
+        val currentLatLong6 = LatLng(38.986209, -0.536340)
+        val currentLatLong7 = LatLng(38.986326, -0.534908)
+        val currentLatLong8 = LatLng(38.986303, -0.534987)
+        val currentLatLong9 = LatLng(38.986274, -0.535064)
+
+        placeMarkerGreen(currentLatLong1)
+        placeMarkerGreen(currentLatLong4)
+        placeMarkerGreen(currentLatLong7)
+        placeMarkerBlue(currentLatLong2)
+        placeMarkerBlue(currentLatLong5)
+        placeMarkerBlue(currentLatLong8)
+        placeMarkerYellow(currentLatLong3)
+        placeMarkerYellow(currentLatLong6)
+        placeMarkerYellow(currentLatLong9)
+
         enableLocation()
+    }
+
+    private fun placeMarkerGreen (location:LatLng){
+        val markerOption = MarkerOptions().position(location).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+        mMap.addMarker(markerOption)
+
+
+    }
+    private fun placeMarkerBlue (location:LatLng){
+        val markerOption = MarkerOptions().position(location).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+        mMap.addMarker(markerOption)
+
+
+    }
+    private fun placeMarkerYellow (location:LatLng){
+        val markerOption = MarkerOptions().position(location).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
+        mMap.addMarker(markerOption)
+
+
     }
 
     private fun isLocationPermissionGranted()=

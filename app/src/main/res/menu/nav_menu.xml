@@ -21,6 +21,10 @@
                 android:id="@+id/navLogin"
                 android:icon="@drawable/icon_login"
                 android:title="@string/TxtLogin"/>
+            <item
+                android:id="@+id/navLogOut"
+                android:icon="@drawable/icon_logout"
+                android:title="@string/TxtLogout"/>
         </menu>
 
     </item>

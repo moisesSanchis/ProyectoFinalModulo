@@ -12,13 +12,13 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import database.RecyclerSQLiteHelper
 import entities.User
+import preferences.ProjectApplication.Companion.prefs
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var etUserLogin: EditText
     private lateinit var etPasswordLogin: EditText
     private lateinit var btnLogin: Button
     private lateinit var btnRegister: Button
-    private lateinit var btnExit: ImageButton
     lateinit var recyclerDB: RecyclerSQLiteHelper
 
     @SuppressLint("Recycle")
@@ -30,7 +30,6 @@ class LoginActivity : AppCompatActivity() {
         etPasswordLogin = findViewById(R.id.etPasswordLogin)
         btnLogin = findViewById(R.id.btnLogin)
         btnRegister = findViewById(R.id.btnRegisterLogin)
-        btnExit = findViewById(R.id.ibtnExitLogin)
         var userString: String = ""
         var pass: String = ""
         etUserLogin.addTextChangedListener {
@@ -59,8 +58,17 @@ class LoginActivity : AppCompatActivity() {
             listUsers.forEach{ user ->
 
                 if (userString == user.getName() && pass == user.getPassword()) {
+                    user.getName()
+                        ?.let {
+                            user.getPoints()?.let { it1 ->
+                                prefs.saveData(
+                                    it,
+                                    it1, user.getMail()!!, user.getImage()!!
+                                )
+                            }
+                        }
                     val intentMain = Intent(this, MainActivity::class.java)
-                    intentMain.putExtra("newUser", user)
+                  //  intentMain.putExtra("newUser", user)
                     startActivity(intentMain)
 
 
@@ -79,9 +87,7 @@ class LoginActivity : AppCompatActivity() {
             val intentRegister = Intent(this@LoginActivity, RegisterActivity::class.java)
             startActivity(intentRegister)
         }
-        btnExit.setOnClickListener {
-            finishAffinity()
-        }
+
 
 
     }

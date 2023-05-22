@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Recycler</string>
-    <string name="TxtWelcome">Bienvenido usario</string>
+    <string name="TxtWelcome">Bienvenido</string>
     <string name="TxtClassify">Clasifica tu envase</string>
     <string name="TxtLocate">Localiza tu area de reciclaje</string>
     <string name="TxtAwards">Gana Premios Por Reciclar</string>
@@ -15,8 +15,9 @@
     <string name="TxtNameLogin">Escriba aqui su nombre de usuario</string>
     <string name="TxtPasswordLogin">Contraseña</string>
     <string name="TxtPasswordLoginHint">Escriba aqui su contraseña</string>
-    <string name="TxtLogin">Logeate</string>
+    <string name="TxtLogin">Iniciar sesion</string>
     <string name="TxtOr">O</string>
+    <string name="TxtLogout">Cerrar sesion</string>
     <string name="TxtRegisterLogin">Registrate</string>
     <string name="TxtIconExit">Icono boton salir</string>
     <string name="TxtProfile">Perfil</string>
@@ -50,5 +51,44 @@
     <string name="TxtGlassResult">El envase escaneado es de cristal y por lo tanto tiene que depositarse en el contenedor verde</string>
     <string name="TxtEcoparkResult">El envase escaneado contiene componentes electronicos y por lo tanto tiene que llevarse a un ecoparque</string>
     <string name="TxtLearnHeader">Aprende a reciclar</string>
+    <string name="TxtWhatThrowEachContainer">Que tirar en cada contenedor</string>
+    <string name="TxtWhatCanBeRecycled">Que se puede reciclar</string>
+    <string name="TxtEcoAwarness">Conciencia Eco</string>
+    <string name="TxtRecycleMe">Reciclame</string>
+    <string name="TxtCalculatorHeader">Calcula tu huella de carbono</string>
+    <string name="TxtElectricity">Electricidad consumida en Kwh</string>
+    <string name="TxtKilometers">Kilometros recorridos</string>
+    <string name="TxtConsumeGas">Gas consumido en (m³) </string>
+    <string name="TxtCalculate">Calcular</string>
+    <string name="TxtTotalCarbonFootprint">Huella total de carbono:</string>
+    <string name="TxtAwardsRegister">Debes de estar registrado para acceder a los premios</string>
+    <string name="TxtAwardsHeader">Mira quien recicla más</string>
+    <string name="TxtWinAwards">Gana premios</string>
+    <string name="TxtSoundOn">Reproducir el sonido mientras se ejecuta la aplicación</string>
+    <string name="TxtSoundOff">No reproducir sonidos mientras se ejecuta la aplicación</string>
+    <string name="TxtSound">Sonido</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="TxtCountry">Pais de residencia</string>
+    <string name="TxtIndicateCountry">Indica el pais donde vives</string>
+    <string name="TxtListOfContainers">Lista de materiales reciclados</string>
+    <string name="TxtTypeOfMaterials">Tipo de materiales que sueles reciclar</string>
+    <string name="TxtCategory1">Ajustes aplicación</string>
+    <string name="TxtCategory2">Información usuario</string>
+    <string name="TxtCategory3">Informacion reciclaje</string>
+    <string name="TxtDiscountsHeader">Canjea tus puntos por descuentos</string>
 
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

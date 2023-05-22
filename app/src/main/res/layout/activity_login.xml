@@ -5,7 +5,7 @@
     android:id="@+id/edUserLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgound_gradient"
+    android:background="@color/white"
     tools:context=".LoginActivity">
 
     <TextView
@@ -15,7 +15,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:text="@string/TxtUser"
-        android:textColor="#1541DC"
+        android:textColor="#2196F3"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,6 +27,7 @@
         android:layout_marginTop="24dp"
         android:autofillHints=""
         android:ems="10"
+        android:background="@drawable/backgound_gradient"
         android:inputType="text"
         android:textColor="#2196F3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +42,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="@string/TxtPasswordLogin"
-        android:textColor="#1541DC"
+        android:textColor="#2196F3"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUserLogin" />
@@ -53,6 +54,7 @@
         android:layout_marginTop="32dp"
         android:autofillHints=""
         android:ems="10"
+        android:background="@drawable/backgound_gradient"
         android:inputType="textPassword"
         android:textColor="#2196F3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +67,7 @@
         android:layout_width="176dp"
         android:layout_height="77dp"
         android:layout_marginTop="64dp"
-        android:backgroundTint="#E5E5E5"
+        android:background="@drawable/backgound_gradient"
         android:text="@string/TxtLogin"
         android:textColor="#1541DC"
         android:textSize="16sp"
@@ -80,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/TxtOr"
+        android:textColor="#2196F3"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +93,7 @@
         android:layout_width="181dp"
         android:layout_height="72dp"
         android:layout_marginTop="32dp"
-        android:backgroundTint="#E5E5E5"
+        android:background="@drawable/backgound_gradient"
         android:text="@string/TxtRegisterLogin"
         android:textColor="#1541DC"
         android:textSize="16sp"
@@ -99,16 +102,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvOr" />
 
-    <ImageButton
-        android:id="@+id/ibtnExitLogin"
-        android:layout_width="82dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="64dp"
-        android:backgroundTint="#E5E5E5"
-        android:contentDescription="@string/TxtIconExit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegisterLogin"
-        app:srcCompat="@drawable/icon_exit"
-        tools:ignore="VisualLintBounds,SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

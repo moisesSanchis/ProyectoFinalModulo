@@ -1,6 +1,7 @@
 package com.msp.proyectomoises
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
@@ -14,6 +15,7 @@ import androidx.core.widget.addTextChangedListener
 import database.RecyclerDao
 import database.RecyclerSQLiteHelper
 import entities.User
+import java.util.Random
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var etUserName: EditText
@@ -24,6 +26,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var newUser: User
     lateinit var recyclerDB: RecyclerSQLiteHelper
 
+    @SuppressLint("Recycle")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -31,6 +34,7 @@ class RegisterActivity : AppCompatActivity() {
         var userPassword: String = ""
         var userRepeatPassWord: String = ""
         var userMail: String = ""
+        var nameExist = false
         recyclerDB = RecyclerSQLiteHelper(this)
         etUserName = findViewById(R.id.etNameUserRegister)
         etUserPassword = findViewById(R.id.etPasswordRegister)
@@ -54,22 +58,27 @@ class RegisterActivity : AppCompatActivity() {
             val readerDb: SQLiteDatabase = recyclerDB.readableDatabase
             val cursor = readerDb.rawQuery("SELECT name FROM user", null)
             val listNames = ArrayList<String>()
-            var nameExist = false
+
+
             if (cursor.moveToFirst()) {
                 do {
-                    listNames.add(cursor.getInt(0).toString())
+                    listNames.add(cursor.getString(0))
                 } while (cursor.moveToNext())
             }
 
             if (userPassword == userRepeatPassWord) {
 
                listNames.forEach{ name ->
-                   if (name != userName){
+
+                   if (name == userName){
                       nameExist = true
                    }
                }
                 if (!nameExist){
-                    newUser = User(userName, userPassword, 0, userMail, 0)
+                    val imagenesPerfil = arrayListOf<Int>(2131231009,2131231010, 2131231011, 2131231012)
+                    val randomIndex = Random().nextInt(imagenesPerfil.size)
+                    val randomProfile = imagenesPerfil[randomIndex]
+                    newUser = User(userName, userPassword, 0, userMail, randomProfile)
                     if (newUser.getName() != null && newUser.getPassword() != null && newUser.getMail() != null) {
                         recyclerDB.setUser(newUser)
                         Toast.makeText(this, R.string.TxtUserSaveDataBase, Toast.LENGTH_LONG).show()

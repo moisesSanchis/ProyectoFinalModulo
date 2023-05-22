@@ -11,7 +11,7 @@ import entities.User
 
 class RecyclerSQLiteHelper(context:Context):SQLiteOpenHelper(context, nameDB, factory, version) {
     companion object{
-        private const val version = 1
+        private const val version = 2
         private const val nameDB = "RecyclerDB"
         private val factory: SQLiteDatabase.CursorFactory? = null
     }
@@ -23,9 +23,9 @@ class RecyclerSQLiteHelper(context:Context):SQLiteOpenHelper(context, nameDB, fa
 
         val sqlCreationTableUser = "CREATE TABLE user(" + "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
         "name TEXT NOT NULL," + "password TEXT NOT NULL," + "mail TEXT," + "points INTEGER," + "image INTEGER);"
-        val imageTest = R.drawable.profile_test
+        val imageTest = R.drawable.profile_04
         val sqlInsertDataDemo = arrayOf(
-            "INSERT INTO user (id, name, password, mail, image) VALUES (0,'Moises', '1234', 'moises@gmail.com',$imageTest)",
+            "INSERT INTO user (id, name, password, mail,points, image) VALUES (0,'Moises', '1234', 'moises@gmail.com',0,$imageTest)",
             "INSERT INTO container (code, type) VALUES ('5449000000996', 'plastic')",
             "INSERT INTO container (code, type) VALUES ('8414807510341', 'plastic')",
             "INSERT INTO container (code, type) VALUES ('8414807522146', 'plastic')",
@@ -80,6 +80,13 @@ class RecyclerSQLiteHelper(context:Context):SQLiteOpenHelper(context, nameDB, fa
         data.put("type", container.getType().toString())
         val db = this.writableDatabase
         db.insert("container", null, data)
+        db.close()
+    }
+    fun setPoints(user:User, points:Int){
+        val data = ContentValues()
+        data.put("points", points)
+        val db = this.writableDatabase
+        db.update("user", data, "name = ?", arrayOf(user.getName()))
         db.close()
     }
 }
