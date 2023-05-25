@@ -55,37 +55,38 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val currentLatLong8 = LatLng(38.986303, -0.534987)
         val currentLatLong9 = LatLng(38.986274, -0.535064)
 
-        placeMarkerGreen(currentLatLong1)
-        placeMarkerGreen(currentLatLong4)
-        placeMarkerGreen(currentLatLong7)
-        placeMarkerBlue(currentLatLong2)
-        placeMarkerBlue(currentLatLong5)
-        placeMarkerBlue(currentLatLong8)
-        placeMarkerYellow(currentLatLong3)
-        placeMarkerYellow(currentLatLong6)
-        placeMarkerYellow(currentLatLong9)
+        placeMarker(currentLatLong1, "green")
+        placeMarker(currentLatLong4, "green")
+        placeMarker(currentLatLong7, "green")
+        placeMarker(currentLatLong2, "blue")
+        placeMarker(currentLatLong5, "blue")
+        placeMarker(currentLatLong8, "blue")
+        placeMarker(currentLatLong3, "yellow")
+        placeMarker(currentLatLong6, "yellow")
+        placeMarker(currentLatLong9, "yellow")
 
         enableLocation()
     }
 
-    private fun placeMarkerGreen (location:LatLng){
-        val markerOption = MarkerOptions().position(location).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
-        mMap.addMarker(markerOption)
-
+    private fun placeMarker (location:LatLng, color:String){
+        when(color){
+            "green"->{
+                val markerOption = MarkerOptions().position(location).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+                mMap.addMarker(markerOption)
+            }
+            "blue"->{
+                val markerOption = MarkerOptions().position(location).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                mMap.addMarker(markerOption)
+            }
+            "yellow"->{
+                val markerOption = MarkerOptions().position(location).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
+                mMap.addMarker(markerOption)
+            }
+        }
 
     }
-    private fun placeMarkerBlue (location:LatLng){
-        val markerOption = MarkerOptions().position(location).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
-        mMap.addMarker(markerOption)
 
 
-    }
-    private fun placeMarkerYellow (location:LatLng){
-        val markerOption = MarkerOptions().position(location).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
-        mMap.addMarker(markerOption)
-
-
-    }
 
     private fun isLocationPermissionGranted()=
         ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED

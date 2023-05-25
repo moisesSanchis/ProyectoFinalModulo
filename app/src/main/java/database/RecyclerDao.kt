@@ -10,6 +10,7 @@ class RecyclerDao(private val context: Context) {
         const val C_TABLE = "container"
         const val C_COLUMN_CODE = "code"
         const val C_COLUMN_TYPE = "type"
+        const val C_COLUMN_RECYCLED = "recycled"
 
         const val C_TABLE2 = "user"
         const val C_COLUMN_ID = "id"

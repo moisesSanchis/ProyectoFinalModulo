@@ -150,7 +150,7 @@ class MainActivity : AppCompatActivity() {
         cvAwards.setOnClickListener {
             music()
             if (prefs.getData().getName()?.isNotEmpty() == true) {
-                val userPrefs = prefs.getData()
+             /*   val userPrefs = prefs.getData()
                 val readerDb: SQLiteDatabase = recyclerDB.readableDatabase
                 val cursor = readerDb.rawQuery(
                     "SELECT name, points  FROM user where points >=0 or name = '" + userPrefs.getName() + "' limit 5",
@@ -164,9 +164,9 @@ class MainActivity : AppCompatActivity() {
                         val userActual = User(nameCursor, "", pointsCursor, "mailCursor", 0)
                         listUsers.add(userActual)
                     } while (cursor.moveToNext())
-                }
+                }*/
                 val intentAwards = Intent(this, AwardsActivity::class.java)
-                intentAwards.putExtra("listUsers", listUsers)
+           //     intentAwards.putExtra("listUsers", listUsers)
                 startActivity(intentAwards)
 
             } else {

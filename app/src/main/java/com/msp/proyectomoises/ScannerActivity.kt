@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Toast
 import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
-import com.msp.proyectomoises.databinding.ActivityMainBinding
 import com.msp.proyectomoises.databinding.ActivityScannerBinding
 
 class ScannerActivity : AppCompatActivity() {

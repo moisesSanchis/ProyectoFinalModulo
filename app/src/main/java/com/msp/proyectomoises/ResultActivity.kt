@@ -1,12 +1,14 @@
 package com.msp.proyectomoises
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import database.RecyclerSQLiteHelper
 import entities.Container
 import entities.User
@@ -28,7 +30,7 @@ class ResultActivity : AppCompatActivity() {
         recyclerDB = RecyclerSQLiteHelper(this)
         val codeContainer = intent.getStringExtra("codeBar")
         val readerDb: SQLiteDatabase = recyclerDB.readableDatabase
-        val cursor = readerDb.rawQuery("SELECT code, type FROM container", null)
+        val cursor = readerDb.rawQuery("SELECT *, type FROM container", null)
         val listContainers = ArrayList<Container>()
         var containerScanned = Container()
 
@@ -36,7 +38,8 @@ class ResultActivity : AppCompatActivity() {
             do {
                 val codeCursor: String = cursor.getString(0)
                 val typeCursor: String = cursor.getString(1)
-                val containerActual = Container(codeCursor, typeCursor)
+                val recycledCursor:String = cursor.getString(2)
+                val containerActual = Container(codeCursor, typeCursor,recycledCursor)
                 listContainers.add(containerActual)
             } while (cursor.moveToNext())
         }
@@ -58,36 +61,70 @@ class ResultActivity : AppCompatActivity() {
                 "plastic" ->{
                     ivresult.setImageResource(R.drawable.container_plastic)
                     tvResult.setText(R.string.TxtPlasticResult)
-                   sumPoints()
+                    if (codeContainer != null) {
+                        sumPoints(containerScanned)
+                    }
                 }
                 "glass" ->{
                     ivresult.setImageResource(R.drawable.container_glass)
                     tvResult.setText(R.string.TxtGlassResult)
-                    sumPoints()
+                    if (codeContainer != null) {
+                        sumPoints(containerScanned)
+                    }
                 }
                 "cardboard" ->{
                     ivresult.setImageResource(R.drawable.container_cardboard)
                     tvResult.setText(R.string.TxtCardboardResult)
-                    sumPoints()
+                    if (codeContainer != null) {
+                        sumPoints(containerScanned)
+                    }
 
                 }
                 "electronic" ->{
                     ivresult.setImageResource(R.drawable.ecopark)
                     tvResult.setText(R.string.TxtEcoparkResult)
-                    sumPoints()
+                    if (codeContainer != null) {
+                        sumPoints(containerScanned)
+                    }
                 }
-
 
             }
 
+        }
+        val navigationView: BottomNavigationView = findViewById(R.id.menuNavigationResult)
+        navigationView.selectedItemId = R.id.navigationHome
+        navigationView.setOnItemSelectedListener { menuItem ->
+            // Código a ejecutar cuando se seleccione un elemento del menú
+            when (menuItem.itemId) {
+                R.id.navigationHome -> {
+                    // Código a ejecutar cuando se selecciona el elemento Home
+                      val intentMain = Intent(this, MainActivity::class.java)
+                      startActivity(intentMain)
 
+                }
 
+                R.id.navigationLearn -> {
+                    // Código a ejecutar cuando se selecciona el elemento search
+                    val intentLearn = Intent(this, LearnerActivity::class.java)
+                    startActivity(intentLearn)
+
+                }
+
+                R.id.navigationCalculator -> {
+                    // Código a ejecutar cuando se selecciona el elemento calculator
+                    val intencalculator = Intent(this, CalculatorActivity::class.java)
+                    startActivity(intencalculator)
+
+                }
+            }
+
+            true
 
         }
 
 
     }
-    fun sumPoints(){
+    fun sumPoints(container: Container){
         if (ProjectApplication.prefs.getData().getName()?.isNotEmpty() == true) {
             val userPrefs = ProjectApplication.prefs.getData()
             val readerDb: SQLiteDatabase = recyclerDB.readableDatabase
@@ -104,14 +141,18 @@ class ResultActivity : AppCompatActivity() {
                     listUsers.add(userActual)
                 } while (cursor.moveToNext())
             }
+
             listUsers.forEach{ user ->
 
-                if (user.getName() == userPrefs.getName()){
+                if (user.getName() == userPrefs.getName() && container.getRecycled()!="yes"){
                     val userPoints = user.getPoints()
                     val totalPoints = userPoints?.plus(1)
                     if (totalPoints != null) {
                         recyclerDB.setPoints(user, totalPoints)
+                        container.setRecycled("yes")
+                        recyclerDB.setRecycled(container,"yes")
                     }
+
 
                 }
             }

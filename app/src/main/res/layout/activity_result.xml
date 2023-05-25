@@ -46,18 +46,18 @@
 
     <TextView
         android:id="@+id/tvResults"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="179dp"
+        android:layout_height="174dp"
         android:layout_marginTop="64dp"
         android:text="@string/TxtResult"
         android:textColor="#2196F3"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/ivResults" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/menuNavigation"
+        android:id="@+id/menuNavigationResult"
         android:layout_width="372dp"
         android:layout_height="63dp"
         android:background="#FFFFFF"
@@ -73,13 +73,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.24" />
+        app:layout_constraintGuide_percent="0.23918575" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.85" />
+        app:layout_constraintGuide_percent="0.84987277" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

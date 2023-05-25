@@ -11,7 +11,7 @@ import entities.User
 
 class RecyclerSQLiteHelper(context:Context):SQLiteOpenHelper(context, nameDB, factory, version) {
     companion object{
-        private const val version = 2
+        private const val version = 3
         private const val nameDB = "RecyclerDB"
         private val factory: SQLiteDatabase.CursorFactory? = null
     }
@@ -19,18 +19,18 @@ class RecyclerSQLiteHelper(context:Context):SQLiteOpenHelper(context, nameDB, fa
     override fun onCreate(db: SQLiteDatabase?) {
         //Implementamos la lógica para crear la base de datos
         val sqlCreationTableContainer = "CREATE TABLE container(" + " code TEXT PRIMARY KEY,"+
-                "type TEXT NOT NULL); "
+                "type TEXT NOT NULL,"+"recycled TEXT); "
 
         val sqlCreationTableUser = "CREATE TABLE user(" + "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
         "name TEXT NOT NULL," + "password TEXT NOT NULL," + "mail TEXT," + "points INTEGER," + "image INTEGER);"
         val imageTest = R.drawable.profile_04
         val sqlInsertDataDemo = arrayOf(
             "INSERT INTO user (id, name, password, mail,points, image) VALUES (0,'Moises', '1234', 'moises@gmail.com',0,$imageTest)",
-            "INSERT INTO container (code, type) VALUES ('5449000000996', 'plastic')",
-            "INSERT INTO container (code, type) VALUES ('8414807510341', 'plastic')",
-            "INSERT INTO container (code, type) VALUES ('8414807522146', 'plastic')",
-            "INSERT INTO container (code, type) VALUES ('8414807519740', 'cardboard')",
-            "INSERT INTO container (code, type) VALUES ('8431876270358', 'cardboard')")
+            "INSERT INTO container (code, type, recycled) VALUES ('5449000000996', 'plastic', 'not')",
+            "INSERT INTO container (code, type, recycled) VALUES ('8414807510341', 'plastic', 'not')",
+            "INSERT INTO container (code, type, recycled) VALUES ('8414807522146', 'plastic', 'not')",
+            "INSERT INTO container (code, type, recycled) VALUES ('8414807519740', 'cardboard', 'not')",
+            "INSERT INTO container (code, type, recycled) VALUES ('8431876270358', 'cardboard', 'not')")
 
 
         //Se ejecutan las creaciones de las tablas.
@@ -50,14 +50,27 @@ class RecyclerSQLiteHelper(context:Context):SQLiteOpenHelper(context, nameDB, fa
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
         //En esta funcion implementariamos la logica para actualizar la base de datos a una nueva version
-     /*   val sqlInsertDataDemo = arrayOf( "INSERT INTO container (code, type) VALUES ('5449000000996', 'plastic')",
-        "INSERT INTO container (code, type) VALUES ('8414807510341', 'plastic')",
-        "INSERT INTO container (code, type) VALUES ('8414807522146', 'plastic')",
-        "INSERT INTO container (code, type) VALUES ('8414807519740', 'cardboard')",
-        "INSERT INTO container (code, type) VALUES ('8431876270358', 'cardboard')")
+        val sqlDropTableContainer = "DROP TABLE container;"
+        p0?.execSQL(sqlDropTableContainer)
+        val sqlDropTableUser = "DROP TABLE user;"
+        p0?.execSQL(sqlDropTableUser)
+        val sqlCreationTableContainer = "CREATE TABLE container(" + " code TEXT PRIMARY KEY,"+
+                "type TEXT NOT NULL,"+"recycled TEXT); "
+        p0?.execSQL(sqlCreationTableContainer)
+        val sqlCreationTableUser = "CREATE TABLE user(" + "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                "name TEXT NOT NULL," + "password TEXT NOT NULL," + "mail TEXT," + "points INTEGER," + "image INTEGER);"
+        p0?.execSQL(sqlCreationTableUser)
+        val imageTest = R.drawable.profile_04
+        val sqlInsertDataDemo = arrayOf(
+            "INSERT INTO user (id, name, password, mail,points, image) VALUES (0,'Moises', '1234', 'moises@gmail.com',0,$imageTest)",
+            "INSERT INTO container (code, type, recycled) VALUES ('5449000000996', 'plastic', 'not')",
+            "INSERT INTO container (code, type, recycled) VALUES ('8414807510341', 'plastic', 'not')",
+            "INSERT INTO container (code, type, recycled) VALUES ('8414807522146', 'plastic', 'not')",
+            "INSERT INTO container (code, type, recycled) VALUES ('8414807519740', 'cardboard', 'not')",
+            "INSERT INTO container (code, type, recycled) VALUES ('8431876270358', 'cardboard', 'not')")
         for (sqlInsert in sqlInsertDataDemo){
             p0?.execSQL(sqlInsert)
-        }*/
+        }
     }
 
     //Funcion para guardar usuarios en la base de datos
@@ -87,6 +100,13 @@ class RecyclerSQLiteHelper(context:Context):SQLiteOpenHelper(context, nameDB, fa
         data.put("points", points)
         val db = this.writableDatabase
         db.update("user", data, "name = ?", arrayOf(user.getName()))
+        db.close()
+    }
+    fun setRecycled(container: Container, recycled:String){
+        val data = ContentValues()
+        data.put("recycled", recycled)
+        val db = this.writableDatabase
+        db.update("container", data, "code = ?", arrayOf(container.getCode()))
         db.close()
     }
 }
